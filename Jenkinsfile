@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				app = docker.build("karx/fortune")
+				def app = docker.build("karx/fortune")
 			}
 		}
 		stage('Test Image') {
