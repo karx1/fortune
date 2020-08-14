@@ -7,13 +7,17 @@ pipeline {
 			}
 		}
 		stage('Test Image') {
-			app.inside {
-				sh 'echo "Tests passed"'
+			steps {
+				app.inside {
+					sh 'echo "Tests passed"'
+				}
 			}
 		}
 		stage('Push Image') {
-			docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-				app.push("latest")
+			steps {
+				docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+					app.push("latest")
+				}
 			}
 		}
 	}
