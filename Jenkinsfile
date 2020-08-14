@@ -4,7 +4,7 @@ node {
 		checkout scm
 	}
 	stage('build') {
-		def app = docker.build("karx/fortune")
+		app = docker.build("karx/fortune")
 	}
 	stage('Test Image') {
 		app.inside {
